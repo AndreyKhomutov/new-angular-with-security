@@ -101,6 +101,12 @@
 		    <version>${querydslcore.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>spring-security-csrf-token-interceptor</artifactId>
+			<version>0.1.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

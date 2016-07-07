@@ -10,7 +10,8 @@
 
     //Define the main module.
     //The module is accessible everywhere using "angular.module('angularspring')", therefore global variables can be avoided totally.
-        as = angular.module('angularspring', []);
+       //todo add incerteptor
+        as = angular.module('angularspring', ['spring-security-csrf-token-interceptor']);
 
     as.config(function ($routeProvider, $httpProvider) {
         //configure the rounting of ng-view
@@ -74,7 +75,6 @@
         httpHeaders = $httpProvider.defaults.headers;
     });
 
-
     as.run(function ($rootScope, $http, base64) {
         //make current message accessible to root scope and therefore all scopes
         $rootScope.message = function () {
@@ -112,7 +112,8 @@
              * On 'event:loginRequest' send credentials to the server.
          */
         $rootScope.$on('event:loginRequest', function (event, username, password) {
-                        httpHeaders.common['Authorization'] = 'Basic ' + base64.encode(username + ':' + password);
+                            httpHeaders.common['Authorization'] = 'Basic ' + base64.encode(username + ':' + password);
+            // httpHeaders.common['Authorization'] = 'Basic ' + username + ':' + password;
             $http.get('action/user').success(function (data) {
                 $rootScope.user = data;
                 $rootScope.$broadcast('event:loginConfirmed');

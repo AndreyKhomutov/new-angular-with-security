@@ -13,7 +13,7 @@
 
     <context:component-scan base-package="example.angularspring.service.impl"/>
 
-    <sec:http pattern="/admin/**" create-session="never">
+        <sec:http pattern="/admin/**" create-session="never">
         <sec:http-basic entry-point-ref="restAuthenticationEntryPoint"/>
         <sec:intercept-url pattern="/**" access="ROLE_USER"/>
     </sec:http>
@@ -25,7 +25,7 @@
 
     <bean id="restAuthenticationEntryPoint" class="example.angularspring.web.RestAuthenticationEntryPoint"/>
 
-        <sec:authentication-manager alias="authenticationManager">
+    <sec:authentication-manager alias="authenticationManager">
         <sec:authentication-provider>
             <sec:user-service>
                 <sec:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
