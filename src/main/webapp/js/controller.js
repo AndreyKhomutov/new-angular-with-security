@@ -15,11 +15,12 @@
         $scope.path = function () {
             return $location.url();
         };
-
+        //происходит логирование
         $scope.login = function () {
             $scope.$emit('event:loginRequest', $scope.username, $scope.password);
             $('#login').modal('hide');
         };
+        //выход
         $scope.logout = function () {
             $rootScope.user = null;
             $scope.username = $scope.password = null;
@@ -63,6 +64,10 @@
     });
 
     as.controller('AdminController', function ($scope, $http) {
+        $http.get(' action/user');
+    });
+
+    as.controller('ReportController', function ($scope, $http) {
         $http.get('action/user');
     });
 }());

@@ -16,6 +16,7 @@
         //configure the rounting of ng-view
         $routeProvider.when('/person', { controller: 'PersonController', templateUrl: 'person.html'});
         $routeProvider.when('/admin', { controller: 'AdminController', templateUrl: 'admin/admin.html'});
+        $routeProvider.when('/report', { controller: 'ReportController', templateUrl: 'report/report.html'});
 
         //configure $http to catch message responses and show them
         $httpProvider.responseInterceptors.push(function ($q) {
@@ -108,10 +109,10 @@
         });
 
         /**
-         * On 'event:loginRequest' send credentials to the server.
+             * On 'event:loginRequest' send credentials to the server.
          */
         $rootScope.$on('event:loginRequest', function (event, username, password) {
-            httpHeaders.common['Authorization'] = 'Basic ' + base64.encode(username + ':' + password);
+                        httpHeaders.common['Authorization'] = 'Basic ' + base64.encode(username + ':' + password);
             $http.get('action/user').success(function (data) {
                 $rootScope.user = data;
                 $rootScope.$broadcast('event:loginConfirmed');
