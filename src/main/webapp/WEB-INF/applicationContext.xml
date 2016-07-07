@@ -12,7 +12,6 @@
         http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <context:component-scan base-package="example.angularspring.service.impl"/>
-
         <sec:http pattern="/admin/**" create-session="never">
         <sec:http-basic entry-point-ref="restAuthenticationEntryPoint"/>
         <sec:intercept-url pattern="/**" access="ROLE_USER"/>
